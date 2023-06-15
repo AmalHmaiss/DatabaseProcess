@@ -1,7 +1,7 @@
 ---
-title: "All_treatments"
+title: "PROCESSING STEPS OF THE DATABASE INCLUDING DESCRIPTIVE STATISTICS, CORRELATION ANALYSIS AND MODEL-BASED RANKING OF AD PARAMETERS EXTRACTED FROM THE LITERATURE"
 output: html_document
-date: "2023-05-17"
+
 ---
 
 ```{r setup, include=FALSE}
@@ -41,19 +41,23 @@ library(dplyr)
 ```{r}
 file1 <- 'rawalldata.csv'
 database1 <- read.csv(file1, sep = ";",dec = ",", na.strings = c("", " ", "NA"),stringsAsFactors = T)
+View(database1)
 str(database1)
+
 ```
 ## 2.2. Qualitative variables converted
 
 ```{r}
 file2 <- 'rawalldata_allquan.csv'
 database2 <- read.csv(file2, sep = ";",dec = ",", na.strings = c("", " ", "NA"),stringsAsFactors = T)
+View(database2)
 str(database2)
 ```
 ## 2.3. Compelete database
 ```{r}
 file3 <- 'Completedata.csv'
 database3 <- read.csv(file3, sep = ";",dec = ",",na.strings = c("", " ", "NA"),stringsAsFactors = T)
+View(database3)
 str(database3)
 ```
 
@@ -62,8 +66,8 @@ str(database3)
 ```{r}
 quantitative <- database1 [,c(1,2,3,5,6,10:12,14,15,17:26,28,29)]
 qualitative <- database1 [,c(1,4,7:9,13,16,27)]
-stat_quan <- describe(quantitative [,-c(1)])
-stat_qual <- summary(qualitative)
+describe(quantitative [,-c(1)])
+summary(qualitative)
 
 ```
 
